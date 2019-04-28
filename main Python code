@@ -1,0 +1,11 @@
+import requests
+import json
+
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'}
+
+url = 'https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv12345&productId=19523497981&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1'
+res = requests.get(url,headers=headers)
+jd=json.loads(res.text.lstrip('fetchJSON_comment98vv12345(').rstrip(');'))
+com_list=jd['comments']
+for i in com_list:
+    print(i['content'])
